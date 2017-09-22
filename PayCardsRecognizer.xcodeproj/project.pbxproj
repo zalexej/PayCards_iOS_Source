@@ -246,6 +246,7 @@
 		8501D5B11F1FAB3200FAA7A5 /* Enums.h in Headers */ = {isa = PBXBuildFile; fileRef = 8501D5A31F1F8ED000FAA7A5 /* Enums.h */; };
 		8501D5B51F1FAC0700FAA7A5 /* PayCardsRecognizerResult.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8501D5B31F1FAC0700FAA7A5 /* PayCardsRecognizerResult.mm */; };
 		8501D5B61F1FAC0700FAA7A5 /* PayCardsRecognizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8501D5B41F1FAC0700FAA7A5 /* PayCardsRecognizer.mm */; };
+		A8A7EC471F750975007B3AAE /* PayCardsRecognizer.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A8A7EC461F750975007B3AAE /* PayCardsRecognizer.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -506,6 +507,7 @@
 		8501D5B31F1FAC0700FAA7A5 /* PayCardsRecognizerResult.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PayCardsRecognizerResult.mm; sourceTree = "<group>"; };
 		8501D5B41F1FAC0700FAA7A5 /* PayCardsRecognizer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PayCardsRecognizer.mm; sourceTree = "<group>"; };
 		85C7A10C1F21F7F0009A84DC /* PayCardsRecognizer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PayCardsRecognizer.framework; sourceTree = "<group>"; };
+		A8A7EC461F750975007B3AAE /* PayCardsRecognizer.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PayCardsRecognizer.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -542,6 +544,7 @@
 		799F99BB1F1E2BF80010B6B1 = {
 			isa = PBXGroup;
 			children = (
+				A8A7EC461F750975007B3AAE /* PayCardsRecognizer.podspec */,
 				85C7A10C1F21F7F0009A84DC /* PayCardsRecognizer.framework */,
 				799F99DE1F1E2CC20010B6B1 /* PayCardsRecognizerExample */,
 				799F99F51F1E2CDA0010B6B1 /* PayCardsRecognizer */,
@@ -1255,16 +1258,14 @@
 				TargetAttributes = {
 					799F99DC1F1E2CC20010B6B1 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 7F9FM9B29E;
 						ProvisioningStyle = Automatic;
 					};
 					799F99F31F1E2CDA0010B6B1 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = P8A8G8XXL8;
 						ProvisioningStyle = Automatic;
 					};
 					8501D4B41F1F780200FAA7A5 = {
-						DevelopmentTeam = P8A8G8XXL8;
+						ProvisioningStyle = Automatic;
 					};
 					8501D5CE1F20F8CF00FAA7A5 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -1299,6 +1300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				799F99EA1F1E2CC20010B6B1 /* LaunchScreen.storyboard in Resources */,
+				A8A7EC471F750975007B3AAE /* PayCardsRecognizer.podspec in Resources */,
 				799F99E71F1E2CC20010B6B1 /* Assets.xcassets in Resources */,
 				799F99E51F1E2CC20010B6B1 /* Main.storyboard in Resources */,
 			);
@@ -1557,7 +1559,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1602,7 +1604,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1616,7 +1618,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
-				DEVELOPMENT_TEAM = 7F9FM9B29E;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1624,8 +1628,9 @@
 				INFOPLIST_FILE = PayCardsRecognizerExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.azoft.demo.crn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.az.paycards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
@@ -1637,7 +1642,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
-				DEVELOPMENT_TEAM = 7F9FM9B29E;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1645,8 +1652,9 @@
 				INFOPLIST_FILE = PayCardsRecognizerExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.azoft.demo.crn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.az.paycards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s i386 x86_64";
@@ -1657,9 +1665,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = P8A8G8XXL8;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1680,6 +1690,7 @@
 				);
 				INFOPLIST_FILE = PayCardsRecognizer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1688,6 +1699,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.walletone.ios.PayCardsRecognizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1699,9 +1711,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = P8A8G8XXL8;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1720,6 +1734,7 @@
 				);
 				INFOPLIST_FILE = PayCardsRecognizer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1727,6 +1742,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.walletone.ios.PayCardsRecognizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1740,9 +1756,11 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = P8A8G8XXL8;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1774,6 +1792,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.walletone.ios.PayCardsRecognizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1789,9 +1808,11 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = P8A8G8XXL8;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1821,6 +1842,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.walletone.ios.PayCardsRecognizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
