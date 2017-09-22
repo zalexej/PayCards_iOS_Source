@@ -246,7 +246,6 @@
 		8501D5B11F1FAB3200FAA7A5 /* Enums.h in Headers */ = {isa = PBXBuildFile; fileRef = 8501D5A31F1F8ED000FAA7A5 /* Enums.h */; };
 		8501D5B51F1FAC0700FAA7A5 /* PayCardsRecognizerResult.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8501D5B31F1FAC0700FAA7A5 /* PayCardsRecognizerResult.mm */; };
 		8501D5B61F1FAC0700FAA7A5 /* PayCardsRecognizer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8501D5B41F1FAC0700FAA7A5 /* PayCardsRecognizer.mm */; };
-		A8A7EC471F750975007B3AAE /* PayCardsRecognizer.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A8A7EC461F750975007B3AAE /* PayCardsRecognizer.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -508,6 +507,7 @@
 		8501D5B41F1FAC0700FAA7A5 /* PayCardsRecognizer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PayCardsRecognizer.mm; sourceTree = "<group>"; };
 		85C7A10C1F21F7F0009A84DC /* PayCardsRecognizer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PayCardsRecognizer.framework; sourceTree = "<group>"; };
 		A8A7EC461F750975007B3AAE /* PayCardsRecognizer.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PayCardsRecognizer.podspec; sourceTree = "<group>"; };
+		A8A7EC481F751217007B3AAE /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = LICENSE.md; path = ../PayCards_iOS/LICENSE.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -545,6 +545,7 @@
 			isa = PBXGroup;
 			children = (
 				A8A7EC461F750975007B3AAE /* PayCardsRecognizer.podspec */,
+				A8A7EC481F751217007B3AAE /* LICENSE.md */,
 				85C7A10C1F21F7F0009A84DC /* PayCardsRecognizer.framework */,
 				799F99DE1F1E2CC20010B6B1 /* PayCardsRecognizerExample */,
 				799F99F51F1E2CDA0010B6B1 /* PayCardsRecognizer */,
@@ -1300,7 +1301,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				799F99EA1F1E2CC20010B6B1 /* LaunchScreen.storyboard in Resources */,
-				A8A7EC471F750975007B3AAE /* PayCardsRecognizer.podspec in Resources */,
 				799F99E71F1E2CC20010B6B1 /* Assets.xcassets in Resources */,
 				799F99E51F1E2CC20010B6B1 /* Main.storyboard in Resources */,
 			);
