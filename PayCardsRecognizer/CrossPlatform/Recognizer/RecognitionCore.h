@@ -80,6 +80,8 @@ public:
     virtual cv::Rect CalcWorkingArea(cv::Size frameSize, int captureAreaWidth);
     
     virtual void ProcessFrame(DetectedLineFlags& edgeFlags, void* bufferY, void* bufferUV, size_t bufferSizeY, size_t bufferSizeUV);
+	
+    virtual void Finish();
 
 private:
     cv::Mat CaptureView();
@@ -91,7 +93,8 @@ private:
     void FinishRecognition();
     
 private:
-    
+	
+	weak_ptr<IRecognitionCoreDelegate> _weak_delegate;
     shared_ptr<IRecognitionCoreDelegate> _delegate;
     shared_ptr<IServiceContainer> _serviceContainerPtr;
     

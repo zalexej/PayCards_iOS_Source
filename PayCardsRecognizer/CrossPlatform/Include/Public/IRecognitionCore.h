@@ -74,8 +74,9 @@ public:
     virtual void SetPathNameListTxt(const string& path) = 0;
     
     virtual void SetOrientation(PayCardsRecognizerOrientation orientation) = 0;
-    
-
+	
+	virtual void Finish() = 0;
+	
     virtual bool IsIdle() const = 0;
     virtual void SetIdle(bool isIdle) = 0;
     virtual void ResetResult() = 0;
