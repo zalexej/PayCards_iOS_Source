@@ -69,7 +69,7 @@ private:
     weak_ptr<IServiceContainer> _container;
 
     weak_ptr<IRecognitionCoreDelegate> _delegate;
-    
+	    
     weak_ptr<INeuralNetworkObjectFactory> _factory;
     
     shared_ptr<INeuralNetwork> _localizationNeuralNetworkY;

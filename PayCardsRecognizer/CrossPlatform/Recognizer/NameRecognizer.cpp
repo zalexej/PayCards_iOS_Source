@@ -247,6 +247,9 @@ shared_ptr<INeuralNetworkResultList> CNameRecognizer::Process(cv::Mat& matrix, v
                     for (INeuralNetworkResultList::ResultIterator it = charResult->Begin(); it != charResult->End(); ++it) {
                         
                         shared_ptr<INeuralNetworkResult> resultItem = *it;
+						if(!resultItem) {
+							return nullptr;
+						}
                         int charIdx = resultItem->GetMaxIndex();
                         
                         if (charIdx > 0) charsCount++;

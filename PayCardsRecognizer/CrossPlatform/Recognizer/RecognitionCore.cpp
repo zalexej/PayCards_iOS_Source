@@ -37,7 +37,9 @@ CRecognitionCore::CRecognitionCore(const shared_ptr<IRecognitionCoreDelegate>& d
 {
     _isIdle.store(false);
     _isBusy.store(false);
-    
+	
+	_weak_delegate = delegate;
+	
     IServiceContainerFactory::CreateServiceContainer(_serviceContainerPtr);
     
     _serviceContainerPtr->Initialize();
@@ -53,6 +55,7 @@ CRecognitionCore::CRecognitionCore(const shared_ptr<IRecognitionCoreDelegate>& d
 
 CRecognitionCore::~CRecognitionCore()
 {
+	Finish();
     _isIdle.store(false);
     _edges.clear();
     _currentFrame.release();
@@ -87,17 +90,23 @@ void CRecognitionCore::Deploy()
     if (_mode == PayCardsRecognizerModeNone) return;
     
     if (auto numberRecognizer = _numberRecognizer.lock()) {
-        numberRecognizer->SetDelegate(_delegate);
+		if(!_weak_delegate.expired()){
+			numberRecognizer->SetDelegate(_weak_delegate.lock());
+		}
         if(!numberRecognizer->Deploy()) return;
     }
     
     if (auto dateRecognizer = _dateRecognizer.lock()) {
-        dateRecognizer->SetDelegate(_delegate);
+		if(!_weak_delegate.expired()){
+			dateRecognizer->SetDelegate(_weak_delegate.lock());
+		}
         if(!dateRecognizer->Deploy()) return;
     }
     
     if (auto nameRecognizer = _nameRecognizer.lock()) {
-        nameRecognizer->SetDelegate(_delegate);
+		if(!_weak_delegate.expired()){
+			nameRecognizer->SetDelegate(_weak_delegate.lock());
+		}
         if(!nameRecognizer->Deploy()) return;
     }
     
@@ -313,6 +322,12 @@ void CRecognitionCore::ProcessFrame(DetectedLineFlags& edgeFlags, void* bufferY,
     }
 }
 
+void CRecognitionCore::Finish()
+{
+	_delegate.reset();
+	_weak_delegate.reset();
+}
+
 void CRecognitionCore::FinishRecognition()
 {
     if(auto frameStorage = _frameStorage.lock()) {
@@ -325,7 +340,9 @@ void CRecognitionCore::ProcessFrameThreaded()
 {
     if(auto frameStorage = _frameStorage.lock()) {
         if(frameStorage->SetRawFrame(_currentFrame, _edges, _orientation)) {
-            Recognize();
+			if(!_weak_delegate.expired()){
+				Recognize();
+			}
         }
         else {
             _isBusy.store(false);
@@ -349,31 +366,37 @@ void CRecognitionCore::Recognize()
         // date
         if (_mode&PayCardsRecognizerModeDate &&
             !(recognitionResult->GetRecognitionStatus() & RecognitionStatusDate) &&
-            dateRecognitionAttemptsCount < kDateRecognitionAttempts) {
+            dateRecognitionAttemptsCount < kDateRecognitionAttempts && !_weak_delegate.expired()) {
             if (!RecognizeDate()) {
                 FinishRecognition();
                 return;
             }
         }
         
-        if (_mode&PayCardsRecognizerModeDate || _mode&PayCardsRecognizerModeNumber) {
-            _delegate->RecognitionDidFinish(recognitionResult, (PayCardsRecognizerMode)(PayCardsRecognizerModeNumber|PayCardsRecognizerModeDate));
-
-            if(_mode&PayCardsRecognizerModeGrabCardImage) {
-                auto cardMat = CaptureView();
-                if(!cardMat.empty()) {
-                    _delegate->CardImageDidExtract(cardMat);
-                }
-            }
+        if ((_mode&PayCardsRecognizerModeDate || _mode&PayCardsRecognizerModeNumber)) {
+			if(!_weak_delegate.expired()) {
+				_weak_delegate.lock()->RecognitionDidFinish(recognitionResult, (PayCardsRecognizerMode)(PayCardsRecognizerModeNumber|PayCardsRecognizerModeDate));
+				if(_mode&PayCardsRecognizerModeGrabCardImage) {
+					auto cardMat = CaptureView();
+					if(!cardMat.empty()) {
+						if(!_weak_delegate.expired()) {
+							_weak_delegate.lock()->CardImageDidExtract(cardMat);
+						}
+					}
+				}
+			}
         }
 
         // name
         if (_mode&PayCardsRecognizerModeName &&
-            !(recognitionResult->GetRecognitionStatus() & RecognitionStatusName)) {
+            !(recognitionResult->GetRecognitionStatus() & RecognitionStatusName) && !_weak_delegate.expired()) {
             RecognizeName();
         }
-        
-        _delegate->RecognitionDidFinish(recognitionResult, PayCardsRecognizerModeName);
+        if(!_weak_delegate.expired()) {
+			_weak_delegate.lock()->RecognitionDidFinish(recognitionResult, PayCardsRecognizerModeName);
+		} else {
+			return;
+		}
 
         _isIdle.store(true);
         FinishRecognition();
