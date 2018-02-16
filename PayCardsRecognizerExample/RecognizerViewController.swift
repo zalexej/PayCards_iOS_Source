@@ -23,7 +23,7 @@ class NavigationController: UINavigationController {
 extension String {
     
     public func format(_ seprator: String) -> String {
-        let src = characters
+        let src = self
         var dst = [String]()
         var i = 1
         for char in src {
@@ -45,6 +45,8 @@ class RecognizerViewController: UIViewController, PayCardsRecognizerPlatformDele
     
     @IBOutlet weak var recognizerContainer: UIView!
     
+    @IBOutlet weak var tmpImageView: UIImageView!
+    
     lazy var activityView: UIBarButtonItem = {
         let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityView.startAnimating()
@@ -54,7 +56,8 @@ class RecognizerViewController: UIViewController, PayCardsRecognizerPlatformDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recognizer = PayCardsRecognizer(delegate: self, resultMode: .async, container: recognizerContainer)
+        
+        recognizer = PayCardsRecognizer(delegate: self, resultMode: .async, container: recognizerContainer, frameColor: UIColor(red:0.008,  green:0.478,  blue:1, alpha:1))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +77,6 @@ class RecognizerViewController: UIViewController, PayCardsRecognizerPlatformDele
         
         print(result)
         print(result.dictionary as NSDictionary)
-        
         
         if result.isCompleted {
             performSegue(withIdentifier: "CardDetailsViewController", sender: result)

@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, PayCardsRecognizerResultMode) {
     PayCardsRecognizerResultModeSync, // All recognized data will be return at one time.
 };
 
-typedef NS_ENUM(NSUInteger, PayCardsRecognizerDataMode) {
+typedef NS_OPTIONS(NSUInteger, PayCardsRecognizerDataMode) {
     PayCardsRecognizerDataModeNone = 0,
     PayCardsRecognizerDataModeNumber = 1,
     PayCardsRecognizerDataModeDate = 2,
@@ -41,9 +41,9 @@ typedef NS_ENUM(NSUInteger, PayCardsRecognizerDataMode) {
 
 @interface PayCardsRecognizer : NSObject
 
-- (instancetype _Nonnull)initWithDelegate:(id<PayCardsRecognizerPlatformDelegate> _Nonnull)delegate resultMode:(PayCardsRecognizerResultMode)resultMode container:(UIView * _Nonnull)container;
+- (instancetype _Nonnull)initWithDelegate:(id<PayCardsRecognizerPlatformDelegate> _Nonnull)delegate resultMode:(PayCardsRecognizerResultMode)resultMode container:(UIView * _Nonnull)container frameColor:(UIColor * _Nonnull)frameColor;
 
-- (instancetype _Nonnull)initWithDelegate:(id<PayCardsRecognizerPlatformDelegate> _Nonnull)delegate recognizerMode:(PayCardsRecognizerDataMode)recognizerMode resultMode:(PayCardsRecognizerResultMode)resultMode container:(UIView * _Nonnull)container;
+- (instancetype _Nonnull)initWithDelegate:(id<PayCardsRecognizerPlatformDelegate> _Nonnull)delegate recognizerMode:(PayCardsRecognizerDataMode)recognizerMode resultMode:(PayCardsRecognizerResultMode)resultMode container:(UIView * _Nonnull)container frameColor:(UIColor * _Nonnull)frameColor;
 
 @property (nonatomic, weak, nullable) id<PayCardsRecognizerPlatformDelegate> delegate;
 
