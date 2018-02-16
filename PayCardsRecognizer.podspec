@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name             = 'PayCardsRecognizer'
-  spec.version          = '1.0.2'
+  spec.version          = '1.1.4'
   spec.license          = { type: 'MIT', file: 'LICENSE.md' }
   spec.summary          = "Cloned from https://github.com/faceterteam/PayCards_iOS_Source.git"
   spec.homepage         = 'https://pay.cards'
